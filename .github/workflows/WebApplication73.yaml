@@ -19,7 +19,7 @@ on:
 jobs:
   build:
     name: Build 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
       DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
@@ -31,6 +31,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Setup libnss3-tools
+      run: sudo apt-get install -y libnss3-tools
       
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
@@ -44,7 +47,10 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Dev cert
-      run: dotnet dev-certs https --trust
+      run: |
+        dotnet dev-certs https -ep /usr/local/share/ca-certificates/aspnet/https.crt --format PEM
+        certutil -d sql:$HOME/.pki/nssdb -A -t "P,," -n localhost -i /usr/local/share/ca-certificates/aspnet/https.crt
+        certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n localhost -i /usr/local/share/ca-certificates/aspnet/https.crt
 
     - name: Run the web for test
       run: dotnet ./WebApplication73/bin/Release/net5.0/WebApplication73.dll &
