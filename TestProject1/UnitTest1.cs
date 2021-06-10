@@ -11,7 +11,7 @@ namespace TestProject1
         public async Task TestMethod1()
         {
             using var playwright = await Playwright.CreateAsync();
-            await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions() { Headless = false });
+            await using var browser = await playwright.Chromium.LaunchAsync();// new BrowserTypeLaunchOptions() { Headless = false });
 
             var context = await browser.NewContextAsync(new BrowserNewContextOptions()
             {
