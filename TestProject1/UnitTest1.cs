@@ -1,5 +1,7 @@
 using Microsoft.Playwright;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace TestProject1
@@ -23,10 +25,16 @@ namespace TestProject1
             await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
             await page.ClickAsync("#navlink-consider");
             await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
-            await page.ScreenshotAsync(new PageScreenshotOptions() { Path = "screenshots/consider-german.png" });
+            await page.ScreenshotAsync(new PageScreenshotOptions() 
+            { 
+                Path = Path.Combine(Environment.GetEnvironmentVariable("WORKSPACE_ROOT") ?? String.Empty, "screenshots/consider-german.png")
+            });
             await page.ClickAsync("#navlink-approved");
             await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
-            await page.ScreenshotAsync(new PageScreenshotOptions() { Path = "screenshots/approved-german.png" });
+            await page.ScreenshotAsync(new PageScreenshotOptions() 
+            {
+                Path = Path.Combine(Environment.GetEnvironmentVariable("WORKSPACE_ROOT") ?? String.Empty, "screenshots/approved-german.png") 
+            });
         }
     }
 }
