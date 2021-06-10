@@ -47,7 +47,7 @@ jobs:
       run: dotnet dev-certs https
 
     - name: Run the web for test
-      run: dotnet ./WebApplication73/WebApplication73/bin/Release/net5.0/WebApplication73.dll &
+      run: dotnet ./WebApplication73/bin/Release/net5.0/WebApplication73.dll &
 
     - name: Setup Playwright
       run: |
