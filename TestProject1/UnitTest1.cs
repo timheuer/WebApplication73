@@ -21,20 +21,27 @@ namespace TestProject1
             });
 
             var page = await context.NewPageAsync();
-            await page.GotoAsync("https://tacticsview.azurewebsites.net");
-            await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
-            await page.ClickAsync("#navlink-consider");
-            await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
-            await page.ScreenshotAsync(new PageScreenshotOptions() 
-            { 
-                Path = Path.Combine(Environment.GetEnvironmentVariable("WORKSPACE_ROOT") ?? String.Empty, "screenshots/consider-german.png")
-            });
-            await page.ClickAsync("#navlink-approved");
-            await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
-            await page.ScreenshotAsync(new PageScreenshotOptions() 
+            await page.GotoAsync("http://localhost:5000");
+            await page.ScreenshotAsync(new PageScreenshotOptions()
             {
-                Path = Path.Combine(Environment.GetEnvironmentVariable("WORKSPACE_ROOT") ?? String.Empty, "screenshots/approved-german.png") 
+                Path = Path.Combine(Environment.GetEnvironmentVariable("WORKSPACE_ROOT") ?? String.Empty, "screenshots/test.png")
             });
+
+
+            //await page.GotoAsync("https://tacticsview.azurewebsites.net");
+            //await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
+            //await page.ClickAsync("#navlink-consider");
+            //await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
+            //await page.ScreenshotAsync(new PageScreenshotOptions() 
+            //{ 
+            //    Path = Path.Combine(Environment.GetEnvironmentVariable("WORKSPACE_ROOT") ?? String.Empty, "screenshots/consider-german.png")
+            //});
+            //await page.ClickAsync("#navlink-approved");
+            //await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
+            //await page.ScreenshotAsync(new PageScreenshotOptions() 
+            //{
+            //    Path = Path.Combine(Environment.GetEnvironmentVariable("WORKSPACE_ROOT") ?? String.Empty, "screenshots/approved-german.png") 
+            //});
         }
     }
 }
