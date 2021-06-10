@@ -43,6 +43,9 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
 
+    - name: Dev cert
+      run: dotnet dev-certs https
+
     - name: Run the web for test
       run: dotnet run --project ./WebApplication73/WebApplication73.csproj
 
