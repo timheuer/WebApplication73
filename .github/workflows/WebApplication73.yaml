@@ -44,7 +44,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Run the web for test
-      run: dotnet run --project WebApplication73/WebApplication73.csproj --no-build
+      run: dotnet run --project ./WebApplication73/WebApplication73.csproj --no-build
 
     - name: Setup Playwright
       run: |
