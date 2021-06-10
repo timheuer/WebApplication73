@@ -20,12 +20,12 @@ namespace TestProject1
 
             var page = await context.NewPageAsync();
             await page.GotoAsync("https://tacticsview.azurewebsites.net");
-            await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+            await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
             await page.ClickAsync("#navlink-consider");
-            await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+            await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
             await page.ScreenshotAsync(new PageScreenshotOptions() { Path = "screenshots/consider-german.png" });
             await page.ClickAsync("#navlink-approved");
-            await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+            await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
             await page.ScreenshotAsync(new PageScreenshotOptions() { Path = "screenshots/approved-german.png" });
         }
     }
