@@ -48,9 +48,9 @@ jobs:
 
     - name: Dev cert
       run: |
-        dotnet dev-certs https -ep /usr/local/share/ca-certificates/aspnet/https.crt --format PEM
-        certutil -d sql:$HOME/.pki/nssdb -A -t "P,," -n localhost -i /usr/local/share/ca-certificates/aspnet/https.crt
-        certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n localhost -i /usr/local/share/ca-certificates/aspnet/https.crt
+        dotnet dev-certs https -ep ./https.crt --format PEM
+        certutil -d sql:$HOME/.pki/nssdb -A -t "P,," -n localhost -i ./https.crt
+        certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n localhost -i ./https.crt
 
     - name: Run the web for test
       run: dotnet ./WebApplication73/bin/Release/net5.0/WebApplication73.dll &
