@@ -47,5 +47,11 @@ jobs:
         dotnet tool install -g Microsoft.Playwright.CLI
         npx playwright install-deps chromium
 
-    #- name: Test
-    #  run: dotnet test
+    - name: Test
+      run: dotnet test
+
+    - name: Upload test artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-screenshots
+        path: screenshots
