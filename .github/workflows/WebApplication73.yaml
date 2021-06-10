@@ -47,6 +47,10 @@ jobs:
         dotnet tool install -g Microsoft.Playwright.CLI
         npx playwright install-deps chromium
 
+    - name: Ensure latest Chromium
+      run: |
+        npm i -D playwright
+
     - name: Test
       run: dotnet test
 
