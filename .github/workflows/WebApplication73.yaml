@@ -48,8 +48,11 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
 
+    - name: Publish
+      run: dotnet publish --configuration Release --no-build -o ./published
+
     - name: Run the web for test
-      run: dotnet ./WebApplication73/bin/Release/net5.0/WebApplication73.dll &
+      run: dotnet ./published/WebApplication73.dll &
 
     - name: Setup Playwright
       run: |
