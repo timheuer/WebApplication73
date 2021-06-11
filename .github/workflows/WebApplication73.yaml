@@ -48,8 +48,8 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
 
-    - name: Publish
-      run: dotnet publish --configuration Release --no-build -o ./published
+   # - name: Publish
+   #   run: dotnet publish --configuration Release --no-build -o ./published
 
     - name: Setup Playwright
       run: |
