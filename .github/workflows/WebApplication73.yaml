@@ -51,9 +51,6 @@ jobs:
     - name: Publish
       run: dotnet publish --configuration Release --no-build -o ./published
 
-    - name: Run the web for test
-      run: dotnet ./published/WebApplication73.dll &
-
     - name: Setup Playwright
       run: |
         dotnet tool install -g Microsoft.Playwright.CLI
@@ -62,6 +59,11 @@ jobs:
     - name: Ensure latest Chromium
       run: |
         npm i -D playwright
+
+    - name: Run the web for test
+      run: dotnet ./published/WebApplication73.dll &
+
+
 
     - name: Test
       run: dotnet test
