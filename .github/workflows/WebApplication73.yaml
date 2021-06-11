@@ -61,7 +61,7 @@ jobs:
         npm i -D playwright
 
     - name: Run the web for test
-      run: dotnet ./published/WebApplication73.dll &
+      run: dotnet ./WebApplication73/bin/Release/net5.0/WebApplication73.dll & #./published/WebApplication73.dll
 
 
 
