@@ -17,7 +17,8 @@ namespace TestProject1
 
             var context = await browser.NewContextAsync(new BrowserNewContextOptions()
             {
-                Locale = "de-DE"
+                Locale = "de-DE",
+                ScreenSize = new ScreenSize() { Height = 1080, Width = 1920 }
             });
 
             var page = await context.NewPageAsync();
