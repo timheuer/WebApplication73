@@ -32,13 +32,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup libnss3-tools
-      run: sudo apt-get install -y libnss3-tools
-      
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+
+    - name: Create Certificate
+      run: |
+          dotnet dev-certs https --clean
+          dotnet dev-certs https -ep devcert.cer
 
     - name: Restore
       run: dotnet restore
