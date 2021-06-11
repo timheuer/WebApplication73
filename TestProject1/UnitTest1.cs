@@ -25,8 +25,15 @@ namespace TestProject1
             await page.GotoAsync("http://localhost:5000");
             await page.ScreenshotAsync(new PageScreenshotOptions()
             {
-                Path = Path.Combine(Environment.GetEnvironmentVariable("WORKSPACE_ROOT") ?? String.Empty, "screenshots/test.png")
+                Path = Path.Combine(Environment.GetEnvironmentVariable("WORKSPACE_ROOT") ?? String.Empty, "screenshots/home.png")
             });
+            await page.ClickAsync("#privacylink");
+            await page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
+            await page.ScreenshotAsync(new PageScreenshotOptions()
+            {
+                Path = Path.Combine(Environment.GetEnvironmentVariable("WORKSPACE_ROOT") ?? String.Empty, "screenshots/privacy.png")
+            });
+
 
 
             //await page.GotoAsync("https://tacticsview.azurewebsites.net");
